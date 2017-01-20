@@ -24,6 +24,7 @@ gem 'will_paginate'
 gem 'coveralls', require: false
 gem 'rack-mini-profiler'
 gem 'stamp'
+gem 'yaml_db'
 
 gem 'web-console', group: :development
 
