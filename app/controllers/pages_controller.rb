@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
   def dump_download
     send_file(
-      "#{Rails.root}/public/latest.dump",
+      "#{Rails.root}/app/public/latest.dump",
       filename: "latest.dump",
       type: "text/plain"
     )
