@@ -1,0 +1,7 @@
+pg_dump -F c -v -U mikevallano -h localhost db-tester_development -f db-backups/backup-two.dump
+
+pg_dump -F c -v db-tester_development -f db-backups/backup-three.dump
+
+pg_restore -F c -v -d db-tester_development db-backups/backup-two.dump
+
+pg_restore -F c -v -d db-tester_development db-backups/backup-two.dump
