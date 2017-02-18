@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170121163737) do
+ActiveRecord::Schema.define(version: 20170217154746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clarls", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "critters", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +41,16 @@ ActiveRecord::Schema.define(version: 20170121163737) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "sauces", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "taco_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "sauces", ["taco_id"], name: "index_sauces_on_taco_id", using: :btree
 
   create_table "tacos", force: :cascade do |t|
     t.string   "name"
@@ -69,4 +85,5 @@ ActiveRecord::Schema.define(version: 20170121163737) do
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "sauces", "tacos"
 end
