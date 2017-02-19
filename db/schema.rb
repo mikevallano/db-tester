@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217154746) do
+ActiveRecord::Schema.define(version: 20170219151528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "activities_products", id: false, force: :cascade do |t|
+    t.integer "activity_id"
+    t.integer "product_id"
+  end
+
+  add_index "activities_products", ["activity_id"], name: "index_activities_products_on_activity_id", using: :btree
+  add_index "activities_products", ["product_id"], name: "index_activities_products_on_product_id", using: :btree
 
   create_table "clarls", force: :cascade do |t|
     t.string   "name"
@@ -41,6 +56,13 @@ ActiveRecord::Schema.define(version: 20170217154746) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "sauces", force: :cascade do |t|
     t.string   "name"
