@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :owners
   resources :tacos
   resources :critters
   devise_for :users, :controllers => {:registrations => "registrations"}
