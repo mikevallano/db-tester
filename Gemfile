@@ -26,6 +26,10 @@ gem 'rack-mini-profiler'
 gem 'stamp'
 gem 'yaml_db'
 
+gem 'prawn'
+gem 'prawn-table'
+gem 'prawnto'
+
 gem 'web-console', group: :development
 
 group :development, :test do
