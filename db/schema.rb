@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409151101) do
+ActiveRecord::Schema.define(version: 20170413001429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170409151101) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "owner_id"
+    t.integer  "weight"
   end
 
   add_index "critters", ["owner_id"], name: "index_critters_on_owner_id", using: :btree
