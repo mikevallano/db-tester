@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413001429) do
+ActiveRecord::Schema.define(version: 20170422152411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,10 +40,11 @@ ActiveRecord::Schema.define(version: 20170413001429) do
   create_table "critters", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "owner_id"
     t.integer  "weight"
+    t.boolean  "has_collar",  default: false
   end
 
   add_index "critters", ["owner_id"], name: "index_critters_on_owner_id", using: :btree
