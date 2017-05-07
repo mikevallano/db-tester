@@ -45,6 +45,7 @@ group :development, :test do
   gem 'terminal-notifier-guard'
   gem 'spring-commands-rspec'
   gem 'spring'
+  gem 'bullet'
 end
 
 group :test do
