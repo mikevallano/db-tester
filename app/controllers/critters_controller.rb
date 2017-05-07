@@ -4,7 +4,7 @@ class CrittersController < ApplicationController
   # GET /critters
   # GET /critters.json
   def index
-    @critters = Critter.all
+    @critters = Critter.includes(:owner)
   end
 
   # GET /critters/1
