@@ -4,7 +4,10 @@ class OwnersController < ApplicationController
   # GET /owners
   # GET /owners.json
   def index
-    @owners = Owner.all
+    # @owners = Owner.all
+    # @owners = Owner.includes(:critters)
+    # @owners = Owner.by_crit_weight
+    @owners = Owner.joins(:critters)
   end
 
   # GET /owners/1
