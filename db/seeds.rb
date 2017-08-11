@@ -27,3 +27,18 @@ end
                         has_collar: [true, false].sample)
   puts "created critter: #{crit.name}"
 end
+
+50.times do |i|
+  product = Product.create(
+                          name: FFaker::Product.product_name,
+                          price: rand(10.01..99.99)
+                          )
+  puts "product created: #{product.name}"
+end
+
+50.times do
+  transaction = Transaction.create(
+                                    product_id: Product.all.sample.id,
+                                    user_id: User.all.sample.id)
+  puts "transaction created: #{transaction.id}"
+end
