@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  has_many :transactions
+  has_many :products, through: :transactions
+
 
   validates :username, :presence => true, :uniqueness => true
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\z/
