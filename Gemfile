@@ -29,6 +29,7 @@ gem 'yaml_db'
 gem 'prawn'
 gem 'prawn-table'
 gem 'prawnto'
+gem 'rolify'
 
 gem 'web-console', group: :development
 
