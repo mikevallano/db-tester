@@ -30,11 +30,16 @@ ActiveRecord::Base.transaction do
     puts "created critter: #{crit.name}"
   end
 
+  5.times do
+    category = Category.create(name: FFaker::Product.brand)
+  end
+
   10.times do |i|
     product = Product.create(
                             name: FFaker::Product.product_name,
                             price: rand(10.01..99.99)
                             )
+    product.categories << Category.all.sample
     puts "product created: #{product.name}"
   end
 
