@@ -13,22 +13,32 @@ ActiveRecord::Base.transaction do
     puts "created user: #{user.username}"
   end
 
-  50.times do
-    owner = Owner.create(
-                          name: FFaker::Name.name,
-                          description: FFaker::Job.title)
-    puts "created owner: #{owner.name}"
+  User.all.each do |u|
+    if u.id % 5 == 0 && u != User.first
+      manager = User.find(u.id-1)
+      u.manager_id = manager.id
+      u.save
+      manager.add_role(:manager)
+      puts "#{u.username} was assigned to manager: #{manager.username}"
+    end
   end
 
-  50.times do |i|
-    crit = Critter.create(
-                          name: "crit #{CRITS.sample} #{i}",
-                          description: "is a critter",
-                          owner_id: Owner.all.sample.id,
-                          weight: (5..35).to_a.sample,
-                          has_collar: [true, false].sample)
-    puts "created critter: #{crit.name}"
-  end
+  # 50.times do
+  #   owner = Owner.create(
+  #                         name: FFaker::Name.name,
+  #                         description: FFaker::Job.title)
+  #   puts "created owner: #{owner.name}"
+  # end
+
+  # 50.times do |i|
+  #   crit = Critter.create(
+  #                         name: "crit #{CRITS.sample} #{i}",
+  #                         description: "is a critter",
+  #                         owner_id: Owner.all.sample.id,
+  #                         weight: (5..35).to_a.sample,
+  #                         has_collar: [true, false].sample)
+  #   puts "created critter: #{crit.name}"
+  # end
 
   5.times do
     category = Category.create(name: FFaker::Product.brand)
