@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.select(:id, :username, :email, :manager_id)
+  end
+
   def show
     @user = User.friendly.find(params[:id])
     if request.path != user_path(@user)

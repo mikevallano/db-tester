@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :critters
   resources :products
 
-  resources :users, only: [:show], as: :user
+  resources :users, only: [:index, :show], as: :user
 
   get 'about', to: 'pages#about', as: :about
   get 'pages/awaiting_confirmation', as: :awaiting_confirmation
